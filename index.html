@@ -381,7 +381,7 @@ button.wow-cart-action-link.wow-cart-checkout-btn {
     <meta name="theme-color" content="">
     <link rel="canonical" href="https://www.rosierfoods.com/">
     <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin><link rel="shortcut icon" type="image/png" href="craiyon_222225_image.png"><script id='_webengage_script_tag' type='text/javascript'>
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin><link rel="shortcut icon" type="image/png" href="//www.rosierfoods.com/cdn/shop/files/logo_2.png?crop=center&height=32&v=1743060060&width=32"><script id='_webengage_script_tag' type='text/javascript'>
       var webengage;!function(w,e,b,n,g){function o(e,t){e[t[t.length-1]]=function(){r.__queue.push([t.join("."),
       arguments])}}var i,s,r=w[b],z=" ",l="init options track screen onReady".split(z),a="webPersonalization feedback survey notification notificationInbox".split(z),c="options render clear abort".split(z),p="Prepare Render Open Close Submit Complete View Click".split(z),u="identify login logout setAttribute".split(z);if(!r||!r.__v){for(w[b]=r={__queue:[],__v:"6.0",user:{}},i=0;i < l.length;i++)o(r,[l[i]]);for(i=0;i < a.length;i++){for(r[a[i]]={},s=0;s < c.length;s++)o(r[a[i]],[a[i],c[s]]);for(s=0;s < p.length;s++)o(r[a[i]],[a[i],"on"+p[s]])}for(i=0;i < u.length;i++)o(r.user,["user",u[i]]);setTimeout(function(){var f=e.createElement("script"),d=e.getElementById("_webengage_script_tag");f.type="text/javascript",f.async=!0,f.src=("https:"==e.location.protocol?"https://ssl.widgets.webengage.com":"http://cdn.widgets.webengage.com")+"/js/webengage-min-v-6.0.js",d.parentNode.insertBefore(f,d)})}}(window,document,"webengage");webengage.init("~2024a932");
     </script>
@@ -4465,7 +4465,8 @@ window.webengageApp = {
 .slider-wrapper::-webkit-scrollbar{display:none;}
 
 .product-card{
-    min-width:260px;
+    min-width:300px;
+    width: 300px;
     text-align:center;
     background-color:white;
     border-radius:10px;
@@ -4473,7 +4474,7 @@ window.webengageApp = {
     box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 .product-card img{
-    width:220px;
+    width:250px;
     height:220px;
     object-fit:contain;
     display:block;
@@ -6665,208 +6666,6 @@ prev2.onclick = () => slider2.scrollLeft -= 300;
   
   
 
-<script>
-  // === VF DIAG: inline sentinel (start) + global error hooks
-  (function(){
-    window.__VF_LIQUID_SENTINEL__ = {
-      start: Date.now(),
-      shop: "rosier-foods-store.myshopify.com",
-      path: "/index.html",
-      cspMetaPresent: !!document.querySelector('meta[http-equiv="Content-Security-Policy"]')
-    };
-
-    window.addEventListener('error', function(e){
-      try {
-        if (!window.__VF_LIQUID_SENTINEL__.firstError)
-          window.__VF_LIQUID_SENTINEL__.firstError = String(e.message || (e.error && e.error.message) || e);
-      } catch(_) {}
-      // console.error('[VF] inline window.error', e);
-    });
-
-    window.addEventListener('unhandledrejection', function(e){
-      try {
-        if (!window.__VF_LIQUID_SENTINEL__.firstRejection)
-          window.__VF_LIQUID_SENTINEL__.firstRejection = String(e.reason && (e.reason.message || e.reason) || 'unknown');
-      } catch(_) {}
-      // console.error('[VF] inline unhandledrejection', e && e.reason);
-    });
-  })();
-  // === /VF DIAG
-  // console.debug("Initializing chatbot");
-
-  // === HARDEN: safe storage helpers (avoid crashes in Safari Private Mode / blockers)
-  function vfSafeGet(storage, key) { try { return storage.getItem(key); } catch (e) { return null; } }
-  function vfSafeSet(storage, key, value) { try { storage.setItem(key, value); } catch (e) {} }
-
-  let vfSelectedIndex = "rosier-foods-store.myshopify.com";
-  function vfGenerateUUID() {
-    const now = new Date();
-    const yyyy = now.getFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const dd = String(now.getDate()).padStart(2, '0');
-    const hh = String(now.getHours()).padStart(2, '0');
-    const uuid = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    );
-    const randomId = uuid.replace(/-/g, '').substring(0, 16);
-    return `${yyyy}${mm}${dd}${hh}-${randomId}`;
-  }
-
-  // console.debug("metafield settings", ``)
-
-  // === HARDEN: use safe storage access
-  let storedSessionID = vfSafeGet(localStorage, 'verifast-session-id');
-  if (!storedSessionID) {
-    storedSessionID = vfGenerateUUID();
-    vfSafeSet(localStorage, 'verifast-session-id', storedSessionID);
-    // console.debug(`Session id generated is ${storedSessionID}`);
-  } else {
-    // console.debug(`Session id cached is ${storedSessionID}`);
-  }
-
-  const vfShopIndex = "rosier-foods-store.myshopify.com";
-  var vfObserverKey = `verifast_observer_${vfShopIndex}_start`;
-
-  const vfUserPageLandTime = vfSafeGet(sessionStorage, vfObserverKey) || Date.now().toString();
-  if (!vfSafeGet(sessionStorage, vfObserverKey)) {
-    try { sessionStorage.setItem(vfObserverKey, vfUserPageLandTime); } catch (e) {}
-  }
-  // console.debug(`[verifast] customer data  `)
-
-  let vfCurrentPageHref = ""
-  let vfCustomerOnProduct = ``
-  let vfCollectionTitle = ``
-  let vfPageType = `index`
-
-  document.cookie = `verifast-session-id=${storedSessionID}; path=/;`;
-  const vfWebsocketUrl = 'https://p-ws-async.verifast.ai';
-  const vfBotUrl = 'https://bot.verifast.ai'
-  let vfCurrentPage = "www.rosierfoods.com/index.html";
-  let vfIndexSuggestions = ``;
-
-  let vfHeaderImageUrl = "https://cdn.shopify.com/extensions/019ad89e-deba-7f16-9973-3cd9b3ebef1e/verifast-migrate-2024-456/assets/default-bot-header-icon.png";
-  if (vfHeaderImageUrl.startsWith("https")) vfHeaderImageUrl = vfHeaderImageUrl.replace("https://", "//");
-  vfHeaderImageUrl = "https:" + vfHeaderImageUrl;
-  let vfHeaderImageWidth = 50;
-  let vfHeaderImageHeight = 50;
-
-  // Base liquid settings
-  var vfLiquidSettings = {
-    websocketUrl: vfWebsocketUrl,
-    botUrl: vfBotUrl,
-    currentPage: vfCurrentPage,
-    selectedIndex: "rosier-foods-store.myshopify.com",
-    indexSuggestions: `${vfIndexSuggestions}`.split("\n"),
-    headerImageUrl: vfHeaderImageUrl,
-    headerImageHeight: vfHeaderImageHeight,
-    headerImageWidth: vfHeaderImageWidth,
-    iconUrl: "",
-    introMessage: "",
-    botName: "",
-    botSubText: "",
-    customerId: storedSessionID,
-    primaryHex: "",
-    nudgeText: "",
-    nudgeTextSize: "",
-    nudgeMaxHeight: 0,
-    nudgeMaxWidth: 0,
-    nudgeVariant: "text_only",
-    agentIconSize: "",
-    agentIconPosition: "",
-    iconSpaceFromSide: "",
-    iconSpaceFromBottom: "",
-    customerData: null,
-    currentPageHref: vfCurrentPageHref,
-    productTitle: vfCustomerOnProduct,
-    vfCollectionTitle: vfCollectionTitle,
-    vfPageType: vfPageType
-  };
-
-  if (vfLiquidSettings.customerData && vfLiquidSettings.customerData !== null) {
-    // console.debug("Updating customer data in localStorage");
-    try {
-      const dataToStore = typeof vfLiquidSettings.customerData === 'object' 
-        ? JSON.stringify(vfLiquidSettings.customerData) 
-        : vfLiquidSettings.customerData;
-      vfSafeSet(localStorage, 'verifast-customer-data', dataToStore);
-      document.cookie = `verifast-customer-data=${dataToStore}; path=/;`;
-    } catch (e) {
-      // console.error("Error storing customer data:", e);
-    }
-  }
-
-  // === HARDEN: ensure objects even if metafields were null
-  var vfVerifastSettings = {"addToCart":true,"agentIconPosition":"right","agentIconSize":"medium","botDisabled":false,"botDisablePaths":[],"botName":"Health Expert","botUrl":"NA","bubbles":["Suggest something for me?","What product can be great for my family?","Why Should I prefer A2 Ghee?"],"carouselInsideCarousel":false,"carouselType":"default","cartflow":"gokwick_add_to_cart","chatbotAbsoluteTop":false,"chatbotUIDesign":"DEFAULT","enabledPaths":[],"enableWidgetSounds":"None","eventToCapture":{},"headerImageUrl":"https:\/\/storage.googleapis.com\/cdn.asia.verifast.tech\/bot_image_config_data\/3e8ec326-2207-40c3-b1d0-d04c0450fef0%20%281%29-438243.webp","iconSpaceFromBottom":"50","iconSpaceFromSide":"20","iconUrl":"https:\/\/storage.googleapis.com\/cdn.asia.verifast.tech\/bot_image_config_data\/3e8ec326-2207-40c3-b1d0-d04c0450fef0%20%281%29-438243.webp","indexSuggestions":["Suggest something for me?","What product can be great for my family?","Why Should I prefer A2 Ghee?"],"internalBotConfig":{"category_specific_nudges":{"\/products":"Wanna know more about it?","\/collections":""},"category_specific_intro":{"\/products":"Hello 👋 I can answer your questions about [[product_name]]. Let me know what will you like to know?","\/collections":""},"category_specific_bubbles":{"\/products":["What's great about it? [[product_name]]","How is it made? [[product_name]]","Isko daily routine mai kaise use kare? [[product_name]]"]},"page_specific_nudges":{"\/products\/a2-desi-cow-ghee-hand-churned-from-curd":"Discover pure health!","\/collections\/honey":"Health secrets here!"},"page_specific_intro":{"\/products\/a2-desi-cow-ghee-hand-churned-from-curd":"Discover pure Gir Cow A2 Ghee benefits! 🌟 Ask about health perks, pricing, or how it’s made—ask in any language!","\/collections\/honey":"Discover the unique benefits of our raw honeys! 🐝 Ask me anything to explore or compare options!"},"page_specific_bubbles":{"\/products\/a2-desi-cow-ghee-hand-churned-from-curd":["Why is premium ghee worth it? [[product_name]]","How is Gir Cow Ghee made? [[product_name]]"],"\/collections\/honey":["How is Wild Forest Honey made?","Why is Wild Forest Honey special?","How is the honey's purity guaranteed?"]}},"introMessage":"Hello 👋 I'm your Health Expert. How can I take care of your Health today?","language":"en","nudge":true,"nudgeAppearDelay":"15","nudgeDisappearDelay":"25","nudgeText":"Talk to Expert","nudgeTextSize":"12px","persistUtm":false,"primaryHex":"#E9885D","provider":"shopify","recordInteraction":true,"recordInteractionAfterSeconds":"0","removeShowVariant":false,"removeUtmSource":false,"selectedIndex":"rosier-foods-store.myshopify.com","showVariantText":"NA","similarProductReplace":false,"socketConnectionRule":{"connectOn":"autoConnect","onPageSendTime":30},"speechRecognition":false,"storeType":"default","textColor":"None","translations":{"en":{"translatables":{"introMessage":"Hello 👋 I'm your Health Expert. How can I take care of your Health today?","nudgeText":"Talk to Expert","bubbles":["Suggest something for me?","What product can be great for my family?","Why Should I prefer A2 Ghee?"]},"pageSpecifics":{"category_specific_nudges":{"\/products":"Wanna know more about it?","\/collections":""},"category_specific_intro":{"\/products":"Hello 👋 I can answer your questions about [[product_name]]. Let me know what will you like to know?","\/collections":""},"category_specific_bubbles":{"\/products":["What's great about it? [[product_name]]","How is it made? [[product_name]]","Isko daily routine mai kaise use kare? [[product_name]]"]},"page_specific_nudges":{"\/products\/a2-desi-cow-ghee-hand-churned-from-curd":"Discover pure health!","\/collections\/honey":"Health secrets here!"},"page_specific_intro":{"\/products\/a2-desi-cow-ghee-hand-churned-from-curd":"Discover pure Gir Cow A2 Ghee benefits! 🌟 Ask about health perks, pricing, or how it’s made—ask in any language!","\/collections\/honey":"Discover the unique benefits of our raw honeys! 🐝 Ask me anything to explore or compare options!"},"page_specific_bubbles":{"\/products\/a2-desi-cow-ghee-hand-churned-from-curd":["Why is premium ghee worth it? [[product_name]]","How is Gir Cow Ghee made? [[product_name]]"],"\/collections\/honey":["How is Wild Forest Honey made?","Why is Wild Forest Honey special?","How is the honey's purity guaranteed?"]}}}},"verifast-config-pointer":"chatbot-config","zIndex":"9999"};
-  if (!vfVerifastSettings || typeof vfVerifastSettings !== 'object') { vfVerifastSettings = {}; }
-  var vfVerifastSettingsMobile = {"agentIconPosition":"right","enabled":false,"iconSpaceFromBottom":"50","iconSpaceFromSide":"20","verifast-config-pointer-mobile":"chatbot-config"};
-  if (!vfVerifastSettingsMobile || typeof vfVerifastSettingsMobile !== 'object') { vfVerifastSettingsMobile = {}; }
-
-  // Function to check if device is mobile
-  function vfIsMobileDevice() {
-    return (window.innerWidth <= 768) || 
-          (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-  }
-
-  // === HARDEN: null-safe merge
-  function vfMergeConfigurations(baseSettings, verifastSettings, mobileSetting) {
-    let finalSettings = { ...(baseSettings || {}) };
-
-    if (verifastSettings && typeof verifastSettings === 'object') {
-      for (let key in verifastSettings) {
-        if (Object.prototype.hasOwnProperty.call(verifastSettings, key)) {
-          finalSettings[key] = verifastSettings[key];
-        }
-      }
-    }
-    if (vfIsMobileDevice() && mobileSetting && typeof mobileSetting === 'object') {
-      for (let key in mobileSetting) {
-        if (Object.prototype.hasOwnProperty.call(mobileSetting, key)) {
-          finalSettings[key] = mobileSetting[key];
-        }
-      }
-    }
-    if (!finalSettings.botUrl || typeof finalSettings.botUrl !== 'string' || finalSettings.botUrl.length < 7) {
-      finalSettings.botUrl = vfBotUrl;
-    }
-    return finalSettings;
-  }
-
-  // Merge all configurations
-  var vfFinalSettings = vfMergeConfigurations(vfLiquidSettings, vfVerifastSettings, vfVerifastSettingsMobile);
-  // console.debug("Final merged settings:", vfFinalSettings);
-
-  var verifast_bot_config = {
-    verifastSettings: vfFinalSettings
-  };
-  // === HARDEN: also publish explicitly on window
-  window.verifast_bot_config = verifast_bot_config;
-
-  // Add window resize listener to handle orientation changes
-  window.addEventListener('resize', function() {
-    verifast_bot_config.verifastSettings = vfMergeConfigurations(vfLiquidSettings, vfVerifastSettings, vfVerifastSettingsMobile);
-    // console.debug("Settings updated after resize:", verifast_bot_config.verifastSettings);
-  });
-
-  // === VF DIAG: inline sentinel (end)
-  (function(){
-    var s = window.__VF_LIQUID_SENTINEL__ || (window.__VF_LIQUID_SENTINEL__ = {});
-    s.end = Date.now();
-    s.verifast_bot_config_defined = (typeof window.verifast_bot_config !== 'undefined');
-    // capture a few types that often cause crashes before config is set
-    try {
-      s.types = {
-        verifastSettings: typeof vfVerifastSettings,
-        verifastSettingsMobile: typeof vfVerifastSettingsMobile
-      };
-    } catch(_) {}
-    try {
-      document.body.setAttribute('data-vf-inline', s.verifast_bot_config_defined ? 'ok' : 'failed');
-    } catch(_) {}
-    // console.debug('[VF] inline completed', s);
-  })();
-  // === /VF DIAG
-
-</script>
 
 </div>
 
